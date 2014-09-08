@@ -8,7 +8,7 @@
 - name: Install tzdata for Debian based distros
   apt: name={{timezone_package}}
        update_cache=yes
-       cache_valid_time=3600
+       cache_valid_time=86400
        state=present 
   when: ansible_os_family == 'Debian'
   tags: ['timezone']
