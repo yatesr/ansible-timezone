@@ -29,5 +29,4 @@
         src={{zoneinfo_dir}}{{timezone}}
         dest={{localtime_file}}
         force=yes
-  tags: timezone
   tags: ['timezone']
