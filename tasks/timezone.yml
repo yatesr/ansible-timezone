@@ -9,20 +9,23 @@
   apt: name={{timezone_package}}
        update_cache=yes
        cache_valid_time=86400
-       state=present 
+       state=present
   when: ansible_os_family == 'Debian'
   tags: ['timezone']
+  become: yes
 
 - name: Install tzdata for RedHat based distros
   yum: name={{timezone_package}}
        state=present
   when: ansible_os_family == 'RedHat'
   tags: ['timezone']
+  become: yes
 
 - name: Set timezone config
   template: src="timezone-{{ansible_os_family}}.j2"
             dest={{timezone_file}}
   tags: ['timezone']
+  become: yes
 
 - name: Set link to localtime
   file: state=link
@@ -30,3 +33,4 @@
         dest={{localtime_file}}
         force=yes
   tags: ['timezone']
+  become: yes
