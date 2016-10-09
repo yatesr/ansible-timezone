@@ -21,7 +21,7 @@ Example Playbook
 ---
 - hosts: all
   roles:
-  - timezone
+  - yatesr.timezone
 
   vars:
    timezone: America/New_York
