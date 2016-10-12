@@ -3,6 +3,8 @@ Role Name
 
 timezone
 
+[![Build Status](https://travis-ci.org/yatesr/ansible-timezone.svg?branch=master)](https://travis-ci.org/yatesr/ansible-timezone)
+
 Role Variables
 --------------
 ```
