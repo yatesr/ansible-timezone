@@ -21,11 +21,16 @@
   tags: ['timezone']
   become: yes
 
+- name: Check if timezone is valid
+  stat: path={{zoneinfo_dir}}{{timezone}}
+  register: timezone_file
+  
 - name: Set timezone config
   template: src="timezone-{{ansible_os_family}}.j2"
             dest={{timezone_file}}
   tags: ['timezone']
   become: yes
+  when: timezone_file.stat.exists
 
 - name: Set link to localtime
   file: state=link
@@ -34,3 +39,5 @@
         force=yes
   tags: ['timezone']
   become: yes
+  when: timezone_file.stat.exists
+  notify: update tzdata  
