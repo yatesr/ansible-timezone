@@ -21,6 +21,13 @@
   tags: ['timezone']
   become: yes
 
+- name: Install tzdata for Archlinux based distros
+  pacman: name={{timezone_package}}
+          state=present
+  when: ansible_os_family == 'Archlinux' or ansible_os_family == 'Arch Linux'
+  tags: ['timezone']
+  become: yes
+
 - name: Set timezone config
   template: src="timezone-{{ansible_os_family}}.j2"
             dest={{timezone_file}}
