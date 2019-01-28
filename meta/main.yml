@@ -25,4 +25,5 @@ galaxy_info:
     - 20
   categories:
   - system
+  role_name: timezone
 dependencies: []
