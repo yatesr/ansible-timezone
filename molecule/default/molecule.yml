@@ -18,9 +18,6 @@ platforms:
   - name: timezone-debian
     image: debian
     privileged: true
-  - name: timezone-archlinux
-    image: archlinux
-    privileged: true
 provisioner:
   name: ansible
   config_options:
