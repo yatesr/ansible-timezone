@@ -2,8 +2,8 @@
 - name: include platform vars
   include_vars: "{{ item }}"
   with_first_found:
-   - "../vars/{{ ansible_distribution }}.yml"
-   - "../vars/{{ ansible_os_family }}.yml"
+    - "../vars/{{ ansible_distribution }}.yml"
+    - "../vars/{{ ansible_os_family }}.yml"
   tags: ['timezone']
 
 - name: Install tzdata for Debian based distros
