@@ -1,6 +1,7 @@
 ---
 - hosts: all
+
   vars:
-    miniconda_dir: "{{ miniconda_parent_dir }}/conda"
+    timezone: 'America/New_York'
   roles:
     - role: ansible-timezone

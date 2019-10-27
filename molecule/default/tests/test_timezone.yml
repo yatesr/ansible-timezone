@@ -2,6 +2,16 @@
 
 file:
   /etc/localtime:
-    present: true
-  /etc/timezone:
-    present: true
+    exists: true
+    mode: "0777"
+    owner: root
+    group: root
+    filetype: symlink
+    contains: []
+  /usr/share/zoneinfo:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+    filetype: directory
+    contains: []
