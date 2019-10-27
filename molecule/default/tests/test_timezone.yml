@@ -1,0 +1,7 @@
+---
+
+file:
+  /etc/localtime:
+    present: true
+  /etc/timezone:
+    present: true

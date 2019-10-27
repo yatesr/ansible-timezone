@@ -1,0 +1,31 @@
+---
+# Use galaxy_roles/ansible-role-install_goss to install 1 go binary (goss)
+# Create a template in ansible/tests/goss goss.yaml
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#package
+- name: Testing prerequisites
+  hosts: all
+  gather_facts: yes
+  vars:
+    goss_dir: '/root'
+    goss_file: "{{ goss_dir}}/goss.yaml"
+  tasks:
+
+    - name: Start Goss file
+      shell: "echo 'gossfile:' > {{ goss_file }}"
+      changed_when: True
+
+    - name: Assemble Goss yml files
+      shell: "ls -1 *.yml|sed 's/^/  /;s/$/ : {}/' >> {{ goss_file }}"
+      args:
+        chdir: "{{ goss_dir }}"
+      changed_when: True
+
+    - name: Render Goss tests
+      command: goss render
+      args:
+        chdir: "{{ goss_dir }}"
+      changed_when: True
+
+    - name: Test goss files
+      shell: "export GOSS_FILE={{ goss_file }};goss validate --format nagios_verbose"
+      changed_when: False
