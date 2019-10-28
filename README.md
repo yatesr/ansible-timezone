@@ -5,6 +5,7 @@ timezone
 
 Role Variables
 --------------
+
 ```
 
 # Default timezone.  Must be a valid tz database time zone.
@@ -14,7 +15,6 @@ timezone: UTC
 
 Example Playbook
 -------------------------
-### playbook.yml
 
 ```
 
