@@ -1,29 +1,23 @@
 ---
+
 galaxy_info:
-  author: Ryan Yates
+  role_name: timezone
+  namespace: lifeofguenter
+  author: Günter Grodotzki
   description: Role for managing timezone.
-  company:
   license: license (Apache 2.0)
-  min_ansible_version: 1.9
+  min_ansible_version: '2.10'
   platforms:
-    - name: Ubuntu
-      versions:
-        - precise
-        - trusty
     - name: Debian
       versions:
-        - squeeze
-        - wheezy
-        - jessie
-    - name: EL
+        - bookworm
+        - bullseye
+        - buster
+    - name: Ubuntu
       versions:
-        - 6
-        - 7
-    - name: Fedora
-      versions:
-        - 19
-        - 20
+        - jammy
+        - focal
+        - bionic
   galaxy_tags:
     - system
-  role_name: timezone
 dependencies: []

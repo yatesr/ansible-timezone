@@ -1,0 +1,35 @@
+---
+
+version: 2.1
+
+jobs:
+
+  build:
+    machine:
+      # https://circleci.com/docs/2.0/configuration-reference/#machine
+      image: ubuntu-2004:202201-02
+    environment:
+      ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
+
+    steps:
+      - run: sudo rm -f /etc/apt/sources.list.d/google.list /etc/apt/sources.list.d/heroku.list
+      - run: sudo apt-get update
+      - run: sudo apt remove --assume-yes --purge apparmor
+      - run: pip3 install ansible ansible-lint
+
+      - run: ansible --version
+      - run: ansible-lint --version
+
+      - checkout
+
+      # dependencies
+      - run: ansible-galaxy collection install community.general
+
+      - run: printf '[defaults]\nroles_path=../' > ansible.cfg
+      - run: ansible-lint
+
+      - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
+      - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
+
+      - run: cat /etc/timezone
+      - run: ls -lh /etc/localtime

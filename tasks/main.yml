@@ -1,2 +1,4 @@
 ---
-- include: timezone.yml
+
+- name: Import timezone.yml
+  ansible.builtin.import_tasks: timezone.yml

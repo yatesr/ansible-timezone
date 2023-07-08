@@ -1,0 +1,8 @@
+.DS_Store
+*~
+.attach_pid*
+/.idea/
+/.env
+
+/.venv/
+/.tox/
