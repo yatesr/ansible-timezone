@@ -1,2 +1,2 @@
 ---
-- import_playbook: timezone.yml
+- import_tasks: timezone.yml
